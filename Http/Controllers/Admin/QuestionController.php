@@ -82,7 +82,7 @@ class QuestionController extends AdminBaseController
         $question = $this->question->update($question, $request->all());
 
         if($request->has('answer') && !$question->is_answered) {
-            \Mail::to(setting('theme::email'))->queue(new QuestionAnswered($question));
+            \Mail::to($question->email)->queue(new QuestionAnswered($question));
             $this->question->update($question, ['is_answered'=>1]);
         }
 
