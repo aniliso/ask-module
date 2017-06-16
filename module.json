@@ -1,6 +1,7 @@
 {
     "name": "Ask",
     "alias": "ask",
+    "version": "1.0.2",
     "description": "",
     "keywords": [],
     "active": 1,

@@ -67,7 +67,7 @@
                             </td>
                             <td>
                                 <a href="{{ route('admin.ask.question.edit', [$question->id]) }}">
-                                    {{ $question->created_at->formatLocalized('d F Y, D, H:i') }}
+                                    {{ $question->created_at->formatLocalized('%d %B %Y, %u, %H:%M') }}
                                 </a>
                             </td>
                             <td>
