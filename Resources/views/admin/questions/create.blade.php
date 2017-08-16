@@ -11,9 +11,9 @@
     </ol>
 @stop
 
-@section('styles')
+@push('js-stack')
     {!! Theme::script('js/vendor/ckeditor/ckeditor.js') !!}
-@stop
+@endpush
 
 @section('content')
     {!! Form::open(['route' => ['admin.ask.question.store'], 'method' => 'post']) !!}
@@ -42,7 +42,7 @@
     </dl>
 @stop
 
-@section('scripts')
+@push('js-stack')
     <script type="text/javascript">
         $( document ).ready(function() {
             $(document).keypressAction({
@@ -60,4 +60,4 @@
             });
         });
     </script>
-@stop
+@endpush

@@ -1,29 +1,14 @@
 <?php
 
-namespace Modules\Ask\Sidebar;
+namespace Modules\Ask\Events\Handlers;
 
 use Maatwebsite\Sidebar\Group;
 use Maatwebsite\Sidebar\Item;
 use Maatwebsite\Sidebar\Menu;
-use Modules\User\Contracts\Authentication;
+use Modules\Core\Sidebar\AbstractAdminSidebar;
 
-class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender
+class RegisterAskSidebar extends AbstractAdminSidebar
 {
-    /**
-     * @var Authentication
-     */
-    protected $auth;
-
-    /**
-     * @param Authentication $auth
-     *
-     * @internal param Guard $guard
-     */
-    public function __construct(Authentication $auth)
-    {
-        $this->auth = $auth;
-    }
-
     /**
      * @param Menu $menu
      *

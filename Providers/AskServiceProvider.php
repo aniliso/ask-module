@@ -3,11 +3,15 @@
 namespace Modules\Ask\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\Ask\Events\Handlers\RegisterAskSidebar;
+use Modules\Ask\Repositories\QuestionRepository;
+use Modules\Core\Events\BuildingSidebar;
+use Modules\Core\Traits\CanGetSidebarClassForModule;
 use Modules\Core\Traits\CanPublishConfiguration;
 
 class AskServiceProvider extends ServiceProvider
 {
-    use CanPublishConfiguration;
+    use CanPublishConfiguration, CanGetSidebarClassForModule;
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -44,7 +48,7 @@ class AskServiceProvider extends ServiceProvider
     private function registerBindings()
     {
         $this->app->bind(
-            'Modules\Ask\Repositories\QuestionRepository',
+            QuestionRepository::class,
             function () {
                 $repository = new \Modules\Ask\Repositories\Eloquent\EloquentQuestionRepository(new \Modules\Ask\Entities\Question());
 
@@ -55,7 +59,10 @@ class AskServiceProvider extends ServiceProvider
                 return new \Modules\Ask\Repositories\Cache\CacheQuestionDecorator($repository);
             }
         );
-// add bindings
 
+        $this->app['events']->listen(
+            BuildingSidebar::class,
+            $this->getSidebarClassForModule('ask', RegisterAskSidebar::class)
+        );
     }
 }
