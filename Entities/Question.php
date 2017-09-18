@@ -17,7 +17,10 @@ class Question extends Model
 
     public function attachment()
     {
-        return $this->hasOne(File::class, 'id', 'attachment');
+        if(!\App::runningInConsole()) {
+            return $this->hasOne(File::class, 'id', 'attachment');
+        }
+        return true;
     }
 
     public function getFullnameAttribute()
