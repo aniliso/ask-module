@@ -47,4 +47,9 @@ class CreateQuestionRequest extends BaseFormRequest
             'message' => $errors
         ], Response::HTTP_UNPROCESSABLE_ENTITY);
     }
+
+    public function messages()
+    {
+        return trans('validation');
+    }
 }
