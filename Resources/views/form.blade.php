@@ -46,7 +46,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group" :class="{ 'has-error' : formErrors.question }">
-                            {!! BSForm::textarea('message',old('message'),['placeholder' => trans('ask::questions.form.question'), 'v-model'=>'formInputs.question']) !!}
+                            {!! Form::textarea('message',old('message'),['placeholder' => trans('ask::questions.form.question'), 'v-model'=>'formInputs.question', 'class'=>'form-control']) !!}
                             <span v-for="error in formErrors.question" class="help-block validMessage">@{{ error }}</span>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" v-on:click="modalClose">{{ trans('global.buttons.close') }}</button>
-                {!! BSForm::submit(trans('global.buttons.send'), ['class'=>'btn btn-primary']) !!}
+                {!! Form::submit(trans('global.buttons.send'), ['class'=>'btn btn-primary']) !!}
             </div>
             {!! Form::close() !!}
         </div>
