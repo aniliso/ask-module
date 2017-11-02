@@ -27,6 +27,11 @@ class AskServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerBindings();
+
+        $this->app->extend('asgard.ModulesList', function($app) {
+            array_push($app, 'ask');
+            return $app;
+        });
     }
 
     public function boot()
