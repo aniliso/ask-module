@@ -32,7 +32,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="form-group" v-bind:class="[formErrors['question'] ? 'has-error' : '']">
-            {!! BSForm::textarea('message',old('message'),['placeholder' => trans('ask::questions.form.question'), 'v-model'=>'formInputs.question']) !!}
+            {!! Form::textarea('message',old('message'),['placeholder' => trans('ask::questions.form.question'), 'v-model'=>'formInputs.question', 'class'=>'form-control']) !!}
             <span v-if="formErrors['question']" class="help-block validMessage">@{{ formErrors['question'] }}</span>
         </div>
     </div>
@@ -56,7 +56,7 @@
 </div>
 <div class="row">
     <div class="col-md-6 col-xs-12">
-        {!! BSForm::submit(trans('global.buttons.send'), ['class'=>'theme_button color1 btn-lg']) !!}
+        {!! Form::submit(trans('global.buttons.send'), ['class'=>'theme_button color1 btn-lg']) !!}
     </div>
 </div>
 {!! Form::close() !!}

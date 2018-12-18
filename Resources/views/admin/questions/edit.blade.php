@@ -39,8 +39,8 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
-                            {!! BSForm::label(trans('ask::questions.form.question')) !!}
-                            {!! BSForm::textarea('question', $question->question, ['class'=>'textarea']) !!}
+                            {!! Form::label(trans('ask::questions.form.question')) !!}
+                            {!! Form::textarea('question', $question->question, ['class'=>'form-control textarea']) !!}
                         </div>
                     </div>
                     <div class="row">
